@@ -31,7 +31,10 @@ public class StatementPrinter {
     public String statement() {
         final int totalAmount = getTotalAmount();
         final int volumeCredits = getTotalVolumeCredits();
-        final StringBuilder result = new StringBuilder("Statement for " + invoice.getCustomer() + System.lineSeparator());
+        final StringBuilder result = new StringBuilder(
+                "Statement for " + invoice.getCustomer() + System.lineSeparator()
+        );
+
 
         for (Performance performance : invoice.getPerformances()) {
             result.append(String.format(
@@ -65,7 +68,8 @@ public class StatementPrinter {
     }
 
     private static String usd(final int amountInCents) {
-        return NumberFormat.getCurrencyInstance(Locale.US).format(amountInCents / 100);
+        return NumberFormat.getCurrencyInstance(Locale.US)
+                .format(amountInCents / Constants.CENTS_PER_DOLLAR);
     }
 
     private int getVolumeCredits(final Performance performance) {
