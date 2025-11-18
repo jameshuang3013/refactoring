@@ -35,7 +35,6 @@ public class StatementPrinter {
                 "Statement for " + invoice.getCustomer() + System.lineSeparator()
         );
 
-
         for (Performance performance : invoice.getPerformances()) {
             result.append(String.format(
                     "  %s: %s (%s seats)%n",
